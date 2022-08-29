@@ -128,33 +128,35 @@
   <h1>Código fuente para model.hotel_model</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">model.client</span> <span class="k">as</span> <span class="nn">client_mode</span>
 
-<div class="viewcode-block" id="Hotel_model"><a class="viewcode-back" href="../../model.html#model.hotel_model.Hotel_model">[documentos]</a><span class="k">class</span> <span class="nc">Hotel_model</span> <span class="p">:</span>
+
+<div class="viewcode-block" id="HotelModel"><a class="viewcode-back" href="../../model.html#model.hotel_model.HotelModel">[documentos]</a><span class="k">class</span> <span class="nc">HotelModel</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Este modelo es exclusivamente para el uso de formatos básicos del hotel, igualmente se utiliza</span>
 <span class="sd">        la librará re, para validar los campos de nombre, apellido y DNI</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Se declara atributos con las habitaciones del hotel</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__hotel_rooms</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;101&quot;</span><span class="p">,</span> <span class="s2">&quot;102&quot;</span><span class="p">,</span> <span class="s2">&quot;103&quot;</span><span class="p">,</span> <span class="s2">&quot;104&quot;</span><span class="p">,</span> <span class="s2">&quot;201&quot;</span><span class="p">,</span> <span class="s2">&quot;202&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;203&quot;</span><span class="p">,</span> <span class="s2">&quot;204&quot;</span><span class="p">,</span> <span class="s2">&quot;301&quot;</span><span class="p">,</span> <span class="s2">&quot;302&quot;</span><span class="p">,</span> <span class="s2">&quot;303&quot;</span><span class="p">,</span> <span class="s2">&quot;304&quot;</span><span class="p">]</span>
+                              <span class="s2">&quot;203&quot;</span><span class="p">,</span> <span class="s2">&quot;204&quot;</span><span class="p">,</span> <span class="s2">&quot;301&quot;</span><span class="p">,</span> <span class="s2">&quot;302&quot;</span><span class="p">,</span> <span class="s2">&quot;303&quot;</span><span class="p">,</span> <span class="s2">&quot;304&quot;</span><span class="p">]</span>
 
-<div class="viewcode-block" id="Hotel_model.get_hotel_rooms"><a class="viewcode-back" href="../../model.html#model.hotel_model.Hotel_model.get_hotel_rooms">[documentos]</a>    <span class="k">def</span> <span class="nf">get_hotel_rooms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="HotelModel.get_hotel_rooms"><a class="viewcode-back" href="../../model.html#model.hotel_model.HotelModel.get_hotel_rooms">[documentos]</a>    <span class="k">def</span> <span class="nf">get_hotel_rooms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Se retorna el atributo hotel_rooms</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hotel_rooms</span></div>
 
-<div class="viewcode-block" id="Hotel_model.date_model"><a class="viewcode-back" href="../../model.html#model.hotel_model.Hotel_model.date_model">[documentos]</a>    <span class="k">def</span> <span class="nf">date_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">date</span><span class="p">):</span>
+<div class="viewcode-block" id="HotelModel.date_model"><a class="viewcode-back" href="../../model.html#model.hotel_model.HotelModel.date_model">[documentos]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">date_model</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Se formatea la fecha para que no haya errores en el programa</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span></div>
-    
-<div class="viewcode-block" id="Hotel_model.avalible_rooms"><a class="viewcode-back" href="../../model.html#model.hotel_model.Hotel_model.avalible_rooms">[documentos]</a>    <span class="k">def</span> <span class="nf">avalible_rooms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
+
+<div class="viewcode-block" id="HotelModel.avalible_rooms"><a class="viewcode-back" href="../../model.html#model.hotel_model.HotelModel.avalible_rooms">[documentos]</a>    <span class="k">def</span> <span class="nf">avalible_rooms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Este método es encargado de enviar las habitaciones que estén disponibles,</span>
 <span class="sd">            se utiliza el método set entre el argumento y las habitaciones del</span>
@@ -170,8 +172,9 @@
                 <span class="n">free_rooms</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span>
                     <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__hotel_rooms</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">occupied_rooms</span><span class="p">)))</span>
             <span class="k">return</span> <span class="n">free_rooms</span></div>
-            
-<div class="viewcode-block" id="Hotel_model.validate_number"><a class="viewcode-back" href="../../model.html#model.hotel_model.Hotel_model.validate_number">[documentos]</a>    <span class="k">def</span> <span class="nf">validate_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+<div class="viewcode-block" id="HotelModel.validate_number"><a class="viewcode-back" href="../../model.html#model.hotel_model.HotelModel.validate_number">[documentos]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">validate_number</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Regex para validar números se utiliza para validar el DNI y además para que el usuario</span>
 <span class="sd">            solo pueda ingresar valores numéricos</span>
@@ -180,7 +183,8 @@
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="Hotel_model.validate_string"><a class="viewcode-back" href="../../model.html#model.hotel_model.Hotel_model.validate_string">[documentos]</a>    <span class="k">def</span> <span class="nf">validate_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="HotelModel.validate_string"><a class="viewcode-back" href="../../model.html#model.hotel_model.HotelModel.validate_string">[documentos]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">validate_string</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Regex para validar caracteres, se utiliza para validar el nombre y apellido</span>
 <span class="sd">            e igualmente solo permite ingresar valores alfabéticos</span>

@@ -187,7 +187,7 @@ suceda un error, retornando un aviso que indique si el cliente fue creado
 o no.
 :param client_data: argumento obtenido de la interfaz esta variable es un
 diccionario que tiene todos los datos de los formularios.
-:module: view.gui.Interface.format_data_client
+:module: view.gui.Interface.format_data_client.
 :returns: tiene un retorno por medio de un mensaje de aviso este mensaje
 try si no sucedió ningún error retorna que el cliente fue creado correctamente
 except si sucedió un error retorna que el cliente no fue creado correctamente</p>
@@ -196,46 +196,35 @@ except si sucedió un error retorna que el cliente no fue creado correctamente</
 <dl class="py method">
 <dt class="sig sig-object py" id="controller.control.Controller.create_table">
 <span class="sig-name descname"><span class="pre">create_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/control.html#Controller.create_table"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.control.Controller.create_table" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>crea la tabla cliente en la base de datos</p>
+<dd><p>Crea la tabla cliente en la base de datos</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controller.control.Controller.delete_client">
 <span class="sig-name descname"><span class="pre">delete_client</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/control.html#Controller.delete_client"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.control.Controller.delete_client" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Eliminación de un cliente,
-se procede a seleccionar el ID del cliente enfocado en el treeview
-donde se ejecuta un cuadro de texto que permite validar si realmente desea
-borrar ese cliente, cuando esté la confirmación sea verdadera procede a
-eliminarlo y enviar un mensaje de satisfacción, si llega a ocurrir algún
-error este será notificado.
-Si la confirmación es falsa, se envía un mensaje de texto informando que
-seleccione el cliente a eliminar.
-:param client[“text”]: con la instancia creada en la interfaz obtenemos el ID del cliente
-que se desea borrar por medio de la selección de este en el treeview.
-:module: view.gui.Interface.__tree_view.
-:returns: Primero pide confirmar que se desea realmente borrar el cliente si se
-acepta, retorna un cuadro de texto donde se indica que el cliente fue borrado
-correctamente o de suceder un error, retorna que el cliente no fue eliminado correctamente,
-en dado caso que no se acepte borrar el cliente retorna un mensaje que indica que seleccione
-el cliente que se desea borrar.</p>
+<dd><p>Eliminación de un cliente, se procede a seleccionar el ID del cliente enfocado en el treeview donde se
+ejecuta un cuadro de texto que permite validar si realmente desea borrar ese cliente, cuando esté la
+confirmación sea verdadera procede a eliminarlo y enviar un mensaje de satisfacción, si llega a ocurrir algún
+error este será notificado. Si la confirmación es falsa, se envía un mensaje de texto informando que
+seleccione el cliente a eliminar. :param client[“text”]: con la instancia creada en la interfaz obtenemos el
+ID del cliente que se desea borrar por medio de la selección de este en el treeview. :module:
+view.gui.Interface.__tree_view. :returns: Primero pide confirmar que se desea realmente borrar el cliente si
+se acepta, retorna un cuadro de texto donde se indica que el cliente fue borrado correctamente o de suceder
+un error, retorna que el cliente no fue eliminado correctamente, en dado caso que no se acepte borrar el
+cliente retorna un mensaje que indica que seleccione el cliente que se desea borrar.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controller.control.Controller.query_client">
 <span class="sig-name descname"><span class="pre">query_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/control.html#Controller.query_client"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.control.Controller.query_client" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>En este método sucede la búsqueda de clientes por medio de los parámetros
-que el usuario ingrese, recibe dos parámetros que el treeview actualizar
-la visualización de los clientes filtrados y el segundo argumento los datos
-a filtrar.
-Se inicializan variables de caracteres que corresponden a la búsqueda donde estás, son
-modificadas cuando la longitud de algún dato es mayor a 0. Se utiliza condicionales
-para longitudes mayores a 0 modificando así la búsqueda filtrada de los clientes.
-:param tree: este parametro es el treeview de nuestra interfaz en el cual
-se muestran los datos, recibe este argumento para eliminar los datos que tiene
-y actualizarlos con los datos filtrados.
-:param client_data:argumento obtenido de la interfaz esta variable es un
-diccionario que tiene todos los datos de los formularios.
-:module: view.gui.Interface.__tree_view</p>
+<dd><p>En este método sucede la búsqueda de clientes por medio de los parámetros que el usuario ingrese, recibe dos
+parámetros que el treeview actualizar la visualización de los clientes filtrados y el segundo argumento los
+datos a filtrar. Se inicializan variables de caracteres que corresponden a la búsqueda donde estás,
+son modificadas cuando la longitud de algún dato es mayor a 0. Se utiliza condicionales para longitudes
+mayores a 0 modificando así la búsqueda filtrada de los clientes. :param tree: este parametro es el treeview
+de nuestra interfaz en el cual se muestran los datos, recibe este argumento para eliminar los datos que tiene
+y actualizarlos con los datos filtrados. :param client_data:argumento obtenido de la interfaz esta variable
+es un diccionario que tiene todos los datos de los formularios. :module: view.gui.Interface.__tree_view</p>
 </dd></dl>
 
 <dl class="py method">
@@ -260,17 +249,13 @@ y actualizarlos con los de la base de datos.
 <dl class="py method">
 <dt class="sig sig-object py" id="controller.control.Controller.update_client">
 <span class="sig-name descname"><span class="pre">update_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/control.html#Controller.update_client"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.control.Controller.update_client" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Se encarga de actualizar el cliente recibiendo los datos del cliente
-se estructura estos datos en el modelo client se modela la fecha a tipo date
-y se procede a la ejecución del update_client del modelo database.
-Este proceso está envuelto entre un try except, que nos retornara un diálogo de texto
-correcto o incorrecto.
-:param client_data: argumento obtenido de la interfaz esta variable es un
-diccionario que tiene todos los datos de los formularios.
-:module: view.gui.Interface.format_data_client.
-:returns: tiene un retorno por medio de un mensaje de aviso, este mensaje
-try si no sucedió ningún error, retorna que el cliente fue actualizado correctamente
-except si sucedió un error retorna que el cliente no fue actualizado correctamente</p>
+<dd><p>Se encarga de actualizar el cliente recibiendo los datos del cliente se estructura estos datos en el modelo
+client se modela la fecha a tipo date y se procede a la ejecución del update_client del modelo database. Este
+proceso está envuelto entre un try except, que nos retornara un diálogo de texto correcto o incorrecto.
+:param client_data: argumento obtenido de la interfaz esta variable es un diccionario que tiene todos los
+datos de los formularios. :module: view.gui.Interface.format_data_client. :returns: tiene un retorno por
+medio de un mensaje de aviso, este mensaje try si no sucedió ningún error, retorna que el cliente fue
+actualizado correctamente except si sucedió un error retorna que el cliente no fue actualizado correctamente</p>
 </dd></dl>
 
 <dl class="py method">

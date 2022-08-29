@@ -127,114 +127,131 @@
             
   <h1>Código fuente para model.database</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">peewee</span>
+
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Modelo encargado únicamente para la parte del ORM de la aplicación.</span>
 <span class="sd">    Para esta aplicación se utilizó la librería peewee</span>
 <span class="sd">    Se crea el nombre que tendrá la base de datos</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">db</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">SqliteDatabase</span><span class="p">(</span><span class="s1">&#39;Hotel_Teressita.db&#39;</span><span class="p">)</span>
+
+
 <div class="viewcode-block" id="BaseModel"><a class="viewcode-back" href="../../model.html#model.database.BaseModel">[documentos]</a><span class="k">class</span> <span class="nc">BaseModel</span><span class="p">(</span><span class="n">peewee</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">database</span> <span class="o">=</span> <span class="n">db</span></div>
+
+
 <div class="viewcode-block" id="Client"><a class="viewcode-back" href="../../model.html#model.database.Client">[documentos]</a><span class="k">class</span> <span class="nc">Client</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Se crea la clase cliente que tendrá la base de datos, se crean los datos </span>
 <span class="sd">        con su respectivo tipo de valor.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">name</span> <span class="o">=</span>  <span class="n">peewee</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
     <span class="n">last_name</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
     <span class="n">DNI</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
     <span class="n">room</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
     <span class="n">date_entry</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">DateField</span><span class="p">()</span>
     <span class="n">date_exit</span> <span class="o">=</span> <span class="n">peewee</span><span class="o">.</span><span class="n">DateField</span><span class="p">()</span></div>
 
+
 <div class="viewcode-block" id="CRUD"><a class="viewcode-back" href="../../model.html#model.database.CRUD">[documentos]</a><span class="k">class</span> <span class="nc">CRUD</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Se crea esta clase para la creación, lectura</span>
 <span class="sd">        actualización y borrado de datos de la base de datos</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
-    
-<div class="viewcode-block" id="CRUD.create_table"><a class="viewcode-back" href="../../model.html#model.database.CRUD.create_table">[documentos]</a>    <span class="k">def</span> <span class="nf">create_table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CRUD.create_table"><a class="viewcode-back" href="../../model.html#model.database.CRUD.create_table">[documentos]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">create_table</span><span class="p">():</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            se crea la tabla clientes</span>
+<span class="sd">            Se crea la tabla clientes</span>
 <span class="sd">            se utiliza un with para que en caso de error cierre la base de datos</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">with</span> <span class="n">db</span> <span class="p">:</span>
+        <span class="k">with</span> <span class="n">db</span><span class="p">:</span>
             <span class="n">db</span><span class="o">.</span><span class="n">create_tables</span><span class="p">([</span><span class="n">Client</span><span class="p">])</span></div>
-    
-<div class="viewcode-block" id="CRUD.create_client"><a class="viewcode-back" href="../../model.html#model.database.CRUD.create_client">[documentos]</a>    <span class="k">def</span> <span class="nf">create_client</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CRUD.create_client"><a class="viewcode-back" href="../../model.html#model.database.CRUD.create_client">[documentos]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">create_client</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Método para la creación de clientes</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span>
-                    <span class="n">name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
-                    <span class="n">last_name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">],</span>
-                    <span class="n">DNI</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;DNI&#39;</span><span class="p">],</span>
-                    <span class="n">room</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;room&#39;</span><span class="p">],</span>
-                    <span class="n">date_entry</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;date_entry&#39;</span><span class="p">],</span>
-                    <span class="n">date_exit</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;date_exit&#39;</span><span class="p">])</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+            <span class="n">last_name</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">],</span>
+            <span class="n">DNI</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;DNI&#39;</span><span class="p">],</span>
+            <span class="n">room</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;room&#39;</span><span class="p">],</span>
+            <span class="n">date_entry</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;date_entry&#39;</span><span class="p">],</span>
+            <span class="n">date_exit</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;date_exit&#39;</span><span class="p">])</span>
         <span class="n">client</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
-<div class="viewcode-block" id="CRUD.read_clients"><a class="viewcode-back" href="../../model.html#model.database.CRUD.read_clients">[documentos]</a>    <span class="k">def</span> <span class="nf">read_clients</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CRUD.read_clients"><a class="viewcode-back" href="../../model.html#model.database.CRUD.read_clients">[documentos]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">read_clients</span><span class="p">():</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Método para la lectura de todos los clientes</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Client</span><span class="o">.</span><span class="n">select</span><span class="p">()</span></div>
-    
-<div class="viewcode-block" id="CRUD.search_client"><a class="viewcode-back" href="../../model.html#model.database.CRUD.search_client">[documentos]</a>    <span class="k">def</span> <span class="nf">search_client</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CRUD.search_client"><a class="viewcode-back" href="../../model.html#model.database.CRUD.search_client">[documentos]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">search_client</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Método para la búsqueda de clientes según los datos</span>
 <span class="sd">            ingresados en los formularios</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">query</span> <span class="o">=</span> <span class="n">Client</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
-                    <span class="n">Client</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">&amp;</span>\
-                    <span class="n">Client</span><span class="o">.</span><span class="n">last_name</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">])</span><span class="o">&amp;</span>\
-                    <span class="n">Client</span><span class="o">.</span><span class="n">DNI</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;DNI&#39;</span><span class="p">])</span><span class="o">&amp;</span>\
-                    <span class="n">Client</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;room&#39;</span><span class="p">])</span><span class="o">&amp;</span>\
-                    <span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">date_entry</span> <span class="o">&gt;=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;date_entry&#39;</span><span class="p">])</span><span class="o">&amp;</span>\
-                    <span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">date_exit</span> <span class="o">&lt;=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;date_exit&#39;</span><span class="p">]))</span>
+            <span class="n">Client</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span> <span class="o">&amp;</span> \
+            <span class="n">Client</span><span class="o">.</span><span class="n">last_name</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">])</span> <span class="o">&amp;</span> \
+            <span class="n">Client</span><span class="o">.</span><span class="n">DNI</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;DNI&#39;</span><span class="p">])</span> <span class="o">&amp;</span> \
+            <span class="n">Client</span><span class="o">.</span><span class="n">room</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;room&#39;</span><span class="p">])</span> <span class="o">&amp;</span> \
+            <span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">date_entry</span> <span class="o">&gt;=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;date_entry&#39;</span><span class="p">])</span> <span class="o">&amp;</span> \
+            <span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">date_exit</span> <span class="o">&lt;=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;date_exit&#39;</span><span class="p">]))</span>
         <span class="k">for</span> <span class="n">client</span> <span class="ow">in</span> <span class="n">query</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">query</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="s1">&#39;&#39;</span></div>
-    
-<div class="viewcode-block" id="CRUD.update_client"><a class="viewcode-back" href="../../model.html#model.database.CRUD.update_client">[documentos]</a>    <span class="k">def</span> <span class="nf">update_client</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CRUD.update_client"><a class="viewcode-back" href="../../model.html#model.database.CRUD.update_client">[documentos]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">update_client</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Método para la actualización de clientes</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-                    <span class="n">name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
-                    <span class="n">last_name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">],</span>
-                    <span class="n">DNI</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;DNI&#39;</span><span class="p">],</span>
-                    <span class="n">room</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;room&#39;</span><span class="p">],</span>
-                    <span class="n">date_entry</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;date_entry&#39;</span><span class="p">],</span>
-                    <span class="n">date_exit</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;date_exit&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+            <span class="n">last_name</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">],</span>
+            <span class="n">DNI</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;DNI&#39;</span><span class="p">],</span>
+            <span class="n">room</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;room&#39;</span><span class="p">],</span>
+            <span class="n">date_entry</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;date_entry&#39;</span><span class="p">],</span>
+            <span class="n">date_exit</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;date_exit&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
         <span class="n">client</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span></div>
-    
-<div class="viewcode-block" id="CRUD.delete_client"><a class="viewcode-back" href="../../model.html#model.database.CRUD.delete_client">[documentos]</a>    <span class="k">def</span> <span class="nf">delete_client</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">id</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CRUD.delete_client"><a class="viewcode-back" href="../../model.html#model.database.CRUD.delete_client">[documentos]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">delete_client</span><span class="p">(</span><span class="n">id_client</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Método para la eliminación de clientes</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="nb">id</span><span class="p">)</span>
+        <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">id_client</span><span class="p">)</span>
         <span class="n">client</span><span class="o">.</span><span class="n">delete_instance</span><span class="p">()</span></div>
-    
-<div class="viewcode-block" id="CRUD.occupied_rooms"><a class="viewcode-back" href="../../model.html#model.database.CRUD.occupied_rooms">[documentos]</a>    <span class="k">def</span> <span class="nf">occupied_rooms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">date</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CRUD.occupied_rooms"><a class="viewcode-back" href="../../model.html#model.database.CRUD.occupied_rooms">[documentos]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">occupied_rooms</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Método para obtener las habitaciones ocupadas en el día actual</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">rooms</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">rooms</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">query</span> <span class="o">=</span> <span class="n">Client</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">room</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">Client</span><span class="o">.</span><span class="n">date_exit</span> <span class="o">&gt;=</span> <span class="n">date</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">date_entry</span> <span class="o">&lt;=</span> <span class="n">date</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">client</span> <span class="ow">in</span> <span class="n">query</span><span class="p">:</span>
             <span class="n">rooms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">room</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">rooms</span></div>
-<div class="viewcode-block" id="CRUD.occupied_rooms_between"><a class="viewcode-back" href="../../model.html#model.database.CRUD.occupied_rooms_between">[documentos]</a>    <span class="k">def</span> <span class="nf">occupied_rooms_between</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">date_one</span><span class="p">,</span><span class="n">date_two</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CRUD.occupied_rooms_between"><a class="viewcode-back" href="../../model.html#model.database.CRUD.occupied_rooms_between">[documentos]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">occupied_rooms_between</span><span class="p">(</span><span class="n">date_one</span><span class="p">,</span> <span class="n">date_two</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Método para obtener las habitaciones ocupadas en las fechas de entrada y salida seleccionada</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">rooms</span><span class="o">=</span><span class="p">[]</span>
-        <span class="n">query</span> <span class="o">=</span> <span class="n">Client</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">room</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">Client</span><span class="o">.</span><span class="n">date_exit</span><span class="o">&gt;=</span><span class="n">date_one</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">date_entry</span><span class="o">&lt;=</span><span class="n">date_two</span><span class="p">))</span>
+        <span class="n">rooms</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">Client</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">room</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">Client</span><span class="o">.</span><span class="n">date_exit</span> <span class="o">&gt;=</span> <span class="n">date_one</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Client</span><span class="o">.</span><span class="n">date_entry</span> <span class="o">&lt;=</span> <span class="n">date_two</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">client</span> <span class="ow">in</span> <span class="n">query</span><span class="p">:</span>
             <span class="n">rooms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">room</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">rooms</span></div></div>
