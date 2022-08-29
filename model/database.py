@@ -48,6 +48,7 @@ class CRUD:
     def create_client(**kwargs):
         """
             Método para la creación de clientes
+            :param kwargs: contiene todos los datos del cliente
         """
         client = Client(
             name=kwargs['name'],
@@ -62,6 +63,7 @@ class CRUD:
     def read_clients():
         """
             Método para la lectura de todos los clientes
+            :returns: lista de todos los clientes registrados
         """
         return Client.select()
 
@@ -70,6 +72,8 @@ class CRUD:
         """
             Método para la búsqueda de clientes según los datos
             ingresados en los formularios
+            :param kwargs: contiene todos los datos del cliente
+            :returns: lista con los clientes filtrados
         """
         query = Client.select().where(
             Client.name.contains(kwargs['name']) & \
@@ -88,6 +92,7 @@ class CRUD:
     def update_client(**kwargs):
         """
             Método para la actualización de clientes
+            :param kwargs: contiene todos los datos del cliente
         """
         client = Client.update(
             name=kwargs['name'],
@@ -102,6 +107,7 @@ class CRUD:
     def delete_client(id_client):
         """
             Método para la eliminación de clientes
+            :param id_client: id del cliente
         """
         client = Client.get(Client.id == id_client)
         client.delete_instance()
@@ -110,6 +116,7 @@ class CRUD:
     def occupied_rooms(date):
         """
             Método para obtener las habitaciones ocupadas en el día actual
+            :param date: fecha actual
         """
         rooms = []
         query = Client.select(Client.room).where((Client.date_exit >= date) & (Client.date_entry <= date))
@@ -121,6 +128,8 @@ class CRUD:
     def occupied_rooms_between(date_one, date_two):
         """
             Método para obtener las habitaciones ocupadas en las fechas de entrada y salida seleccionada
+            :param date_one: fecha de entrada
+            :param date_two: fecha de salida
         """
         rooms = []
         query = Client.select(Client.room).where((Client.date_exit >= date_one) & (Client.date_entry <= date_two))
