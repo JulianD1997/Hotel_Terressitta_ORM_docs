@@ -144,11 +144,9 @@
 tomara un método de esta clase.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parámetros<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>client_data</strong> – argumento obtenido de la interfaz esta variable es un</p>
+<dd class="field-odd"><p><strong>client_data</strong> – datos obtenidos de los formularios.</p>
 </dd>
 </dl>
-<p>diccionario que tiene todos los datos de los formularios.
-:module: view.gui.Interface.format_data_client.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -157,22 +155,22 @@ tomara un método de esta clase.</p>
 <dd><p>Se encarga de mostrar las habitaciones disponibles en el momento, recibe 5 argumentos
 event: para conocer que se seleccionó una fecha del calendario
 variable_button: este mostrara todas las habitaciones cuando el valor botón multifuncional
-sea (Search)
-room_form: comboBox de modelo vista
-entry_date y exit_date = las fechas en las cuales se desea realizar un reserva.
-:param event: evento cuando se selecciona una fecha de salida y de entrada.
-:module: view.gui.Interface.__date_event.
-:param variable_button: parámetro que nos indica el valor de botón multifuncional.
-:module: view.gui.Interface.self.variable_button.
-:param room_form: comboBox de la interfaz se requiere para actualizarlo con las habitaciones
-disponibles o con todas las habitaciones del hotel.
-:module: view.gui.Interface.self.room_form.
-:param entry_date: fecha de entrada o fecha de inicio de reserva.
-:module: view.gui.Interface.self.entry_date.
-:param exit_date: fecha de salida o fecha de finalización de reserva.
-:module: view.gui.Interface.self.exit_date.
-:returns: retorna los valores que obtendrá el comboBox.
-:module: view.gui.Interface.self.room_form.</p>
+sea (Search)</p>
+<p>room_form: comboBox de modelo vista</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – se selecciono una fecha de entrada y una de salida.</p></li>
+<li><p><strong>variable_button</strong> – valor de botón multifuncional.</p></li>
+<li><p><strong>room_form</strong> – comboBox de habitaciones de la interfaz</p></li>
+<li><p><strong>entry_date</strong> – fecha de entrada.</p></li>
+<li><p><strong>exit_date</strong> – fecha de salida.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>retorna los valores que obtendrá el comboBox.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -184,13 +182,15 @@ las fechas tipos date, luego envía todos los datos organizados al módulo
 database para que este se encargue de crear el cliente en la tabla de base
 de datos, este módulo está entre un bloque try except en dado caso en que
 suceda un error, retornando un aviso que indique si el cliente fue creado
-o no.
-:param client_data: argumento obtenido de la interfaz esta variable es un
-diccionario que tiene todos los datos de los formularios.
-:module: view.gui.Interface.format_data_client.
-:returns: tiene un retorno por medio de un mensaje de aviso este mensaje
-try si no sucedió ningún error retorna que el cliente fue creado correctamente
-except si sucedió un error retorna que el cliente no fue creado correctamente</p>
+o no.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client_data</strong> – datos obtenidos en los formularios</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>mensaje de aviso sobre ejecución</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -206,12 +206,18 @@ except si sucedió un error retorna que el cliente no fue creado correctamente</
 ejecuta un cuadro de texto que permite validar si realmente desea borrar ese cliente, cuando esté la
 confirmación sea verdadera procede a eliminarlo y enviar un mensaje de satisfacción, si llega a ocurrir algún
 error este será notificado. Si la confirmación es falsa, se envía un mensaje de texto informando que
-seleccione el cliente a eliminar. :param client[“text”]: con la instancia creada en la interfaz obtenemos el
-ID del cliente que se desea borrar por medio de la selección de este en el treeview. :module:
-view.gui.Interface.__tree_view. :returns: Primero pide confirmar que se desea realmente borrar el cliente si
-se acepta, retorna un cuadro de texto donde se indica que el cliente fue borrado correctamente o de suceder
-un error, retorna que el cliente no fue eliminado correctamente, en dado caso que no se acepte borrar el
-cliente retorna un mensaje que indica que seleccione el cliente que se desea borrar.</p>
+seleccione el cliente a eliminar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client</strong><strong>[</strong><strong>'text'</strong><strong>]</strong> – id del cliente.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>mensaje de confirmación</p>
+</dd>
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mensaje de aviso sobre ejecución</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -221,10 +227,15 @@ cliente retorna un mensaje que indica que seleccione el cliente que se desea bor
 parámetros que el treeview actualizar la visualización de los clientes filtrados y el segundo argumento los
 datos a filtrar. Se inicializan variables de caracteres que corresponden a la búsqueda donde estás,
 son modificadas cuando la longitud de algún dato es mayor a 0. Se utiliza condicionales para longitudes
-mayores a 0 modificando así la búsqueda filtrada de los clientes. :param tree: este parametro es el treeview
-de nuestra interfaz en el cual se muestran los datos, recibe este argumento para eliminar los datos que tiene
-y actualizarlos con los datos filtrados. :param client_data:argumento obtenido de la interfaz esta variable
-es un diccionario que tiene todos los datos de los formularios. :module: view.gui.Interface.__tree_view</p>
+mayores a 0 modificando así la búsqueda filtrada de los clientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tree</strong> – treeview de nuestra interfaz.</p></li>
+<li><p><strong>client_data</strong> – datos obtenidos en los formularios</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -233,11 +244,12 @@ es un diccionario que tiene todos los datos de los formularios. :module: view.gu
 <dd><p>Este método se encarga de leer todos los clients que estén registrados.
 Recibe un parámetro el cual es el treeview para proceder a eliminar todos
 los datos que estén dentro del él y luego insertar los registros recibidos
-del modelo database (read_clients).
-:param tree: este parametro es el treeview de nuestra interfaz en el cual
-se muestran los datos, recibe este argumento para eliminar los datos que tiene
-y actualizarlos con los de la base de datos.
-:module: view.gui.Interface.__tree_view</p>
+del modelo database (read_clients).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tree</strong> – treeview de nuestra interfaz</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -251,11 +263,15 @@ y actualizarlos con los de la base de datos.
 <span class="sig-name descname"><span class="pre">update_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/control.html#Controller.update_client"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.control.Controller.update_client" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Se encarga de actualizar el cliente recibiendo los datos del cliente se estructura estos datos en el modelo
 client se modela la fecha a tipo date y se procede a la ejecución del update_client del modelo database. Este
-proceso está envuelto entre un try except, que nos retornara un diálogo de texto correcto o incorrecto.
-:param client_data: argumento obtenido de la interfaz esta variable es un diccionario que tiene todos los
-datos de los formularios. :module: view.gui.Interface.format_data_client. :returns: tiene un retorno por
-medio de un mensaje de aviso, este mensaje try si no sucedió ningún error, retorna que el cliente fue
-actualizado correctamente except si sucedió un error retorna que el cliente no fue actualizado correctamente</p>
+proceso está envuelto entre un try except, que nos retornara un diálogo de texto correcto o incorrecto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client_data</strong> – datos obtenidos en los formularios.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>mensaje de aviso sobre ejecución</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -266,21 +282,19 @@ permite que solo se ingrese datos alfabéticos en los formularios nombre, apelli
 en el apartado de DNI a su vez que solo se estén ingresando un máximo de 8 dígitos
 de no ser correcto o en caso de uno ingresar valores se mostraran etiquetas abajo de los formularios
 indicando que estos son requeridos. Retornando un booleano para que el método action_press realice
-el debido flujo del programa.
-:param name_error: etiqueta que nos indicara que el campo nombre está vacío.
-:module: view.gui.Interface.self.name_error.
-:param last_name_error: etiqueta que nos indicara que el campo apellido está vacío.
-:module: view.gui.Interface.self.last_name_error.
-:param dni_error: etiqueta que nos indicara que el campo DNI es erróneo o está vacío.
-:module: view.gui.Interface.self.dni_error.
-:param room_error: etiqueta que nos indicara que no se seleccionó una habitación.
-:module: view.gui.Interface.self.room_error.
-:param client_data: argumento obtenido de la interfaz esta variable es un
-diccionario que tiene todos los datos de los formularios.
-:module: view.gui.Interface.format_data_client.</p>
+el debido flujo del programa.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
-<dd class="field-odd"><p>retorna un booleano.</p>
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name_error</strong> – etiqueta formulario vacio.</p></li>
+<li><p><strong>last_name_error</strong> – etiqueta formulario vacio.</p></li>
+<li><p><strong>dni_error</strong> – etiqueta formulario vacio.</p></li>
+<li><p><strong>room_error</strong> – etiqueta formulario no seleccionado.</p></li>
+<li><p><strong>client_data</strong> – datos obtenidos de los formularios.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>retorna un booleano e informa si los campos estan vacios.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -288,21 +302,29 @@ diccionario que tiene todos los datos de los formularios.
 <dl class="py method">
 <dt class="sig sig-object py" id="controller.control.Controller.validate_number">
 <span class="sig-name descname"><span class="pre">validate_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/control.html#Controller.validate_number"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.control.Controller.validate_number" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Válida que el valor que se esté ingresando sea numérico.
-:param text: este parámetro es requerido para la validación de los cuadros
-de formularios, este módulo válida los intVar de la interfaz.
-:module: model.hotel_model.Hotel_model.validate_number.</p>
+<dd><p>Válida que el valor que se esté ingresando sea numérico.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> – DNI</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>retorna un booleano.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="controller.control.Controller.validate_string">
 <span class="sig-name descname"><span class="pre">validate_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controller/control.html#Controller.validate_string"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#controller.control.Controller.validate_string" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Válida que el valor que se está ingresando sea alfabético.
-:param text: este parámetro es requerido para la validación de los cuadros
-de formularios, este módulo válida los stringVar de la interfaz.
-:module: view.gui.Interface.treeview.
-:returns: retorna un booleano que nos envía el modelo.
-:module: model.hotel_model.Hotel_model.validate_string</p>
+<dd><p>Válida que el valor que se está ingresando sea alfabético.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> – formulario nombre o apellido</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>retorna un booleano.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

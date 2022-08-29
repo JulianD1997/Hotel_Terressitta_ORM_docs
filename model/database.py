@@ -47,7 +47,8 @@ class CRUD:
     @staticmethod
     def create_client(**kwargs):
         """
-            Método para la creación de clientes
+            Método para la creación de clientes.
+            
             :param kwargs: contiene todos los datos del cliente
         """
         client = Client(
@@ -62,7 +63,8 @@ class CRUD:
     @staticmethod
     def read_clients():
         """
-            Método para la lectura de todos los clientes
+            Método para la lectura de todos los clientes.
+
             :returns: lista de todos los clientes registrados
         """
         return Client.select()
@@ -71,8 +73,10 @@ class CRUD:
     def search_client(**kwargs):
         """
             Método para la búsqueda de clientes según los datos
-            ingresados en los formularios
-            :param kwargs: contiene todos los datos del cliente
+            ingresados en los formularios.
+            
+            :param kwargs: contiene todos los datos del cliente.
+            
             :returns: lista con los clientes filtrados
         """
         query = Client.select().where(
@@ -91,7 +95,8 @@ class CRUD:
     @staticmethod
     def update_client(**kwargs):
         """
-            Método para la actualización de clientes
+            Método para la actualización de clientes.
+            
             :param kwargs: contiene todos los datos del cliente
         """
         client = Client.update(
@@ -106,7 +111,8 @@ class CRUD:
     @staticmethod
     def delete_client(id_client):
         """
-            Método para la eliminación de clientes
+            Método para la eliminación de clientes.
+            
             :param id_client: id del cliente
         """
         client = Client.get(Client.id == id_client)
@@ -115,7 +121,8 @@ class CRUD:
     @staticmethod
     def occupied_rooms(date):
         """
-            Método para obtener las habitaciones ocupadas en el día actual
+            Método para obtener las habitaciones ocupadas en el día actual.
+
             :param date: fecha actual
         """
         rooms = []
@@ -127,8 +134,10 @@ class CRUD:
     @staticmethod
     def occupied_rooms_between(date_one, date_two):
         """
-            Método para obtener las habitaciones ocupadas en las fechas de entrada y salida seleccionada
-            :param date_one: fecha de entrada
+            Método para obtener las habitaciones ocupadas en las fechas de entrada y salida seleccionada.
+
+            :param date_one: fecha de entrada.
+            
             :param date_two: fecha de salida
         """
         rooms = []

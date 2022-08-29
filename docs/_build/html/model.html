@@ -240,7 +240,12 @@ actualización y borrado de datos de la base de datos</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="model.database.CRUD.create_client">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model/database.html#CRUD.create_client"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.database.CRUD.create_client" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Método para la creación de clientes</p>
+<dd><p>Método para la creación de clientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – contiene todos los datos del cliente</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -253,38 +258,74 @@ se utiliza un with para que en caso de error cierre la base de datos</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="model.database.CRUD.delete_client">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model/database.html#CRUD.delete_client"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.database.CRUD.delete_client" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Método para la eliminación de clientes</p>
+<dd><p>Método para la eliminación de clientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_client</strong> – id del cliente</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="model.database.CRUD.occupied_rooms">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">occupied_rooms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model/database.html#CRUD.occupied_rooms"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.database.CRUD.occupied_rooms" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Método para obtener las habitaciones ocupadas en el día actual</p>
+<dd><p>Método para obtener las habitaciones ocupadas en el día actual.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>date</strong> – fecha actual</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="model.database.CRUD.occupied_rooms_between">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">occupied_rooms_between</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_one</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_two</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model/database.html#CRUD.occupied_rooms_between"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.database.CRUD.occupied_rooms_between" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Método para obtener las habitaciones ocupadas en las fechas de entrada y salida seleccionada</p>
+<dd><p>Método para obtener las habitaciones ocupadas en las fechas de entrada y salida seleccionada.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date_one</strong> – fecha de entrada.</p></li>
+<li><p><strong>date_two</strong> – fecha de salida</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="model.database.CRUD.read_clients">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_clients</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/model/database.html#CRUD.read_clients"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.database.CRUD.read_clients" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Método para la lectura de todos los clientes</p>
+<dd><p>Método para la lectura de todos los clientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lista de todos los clientes registrados</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="model.database.CRUD.search_client">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">search_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model/database.html#CRUD.search_client"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.database.CRUD.search_client" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Método para la búsqueda de clientes según los datos
-ingresados en los formularios</p>
+ingresados en los formularios.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – contiene todos los datos del cliente.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>lista con los clientes filtrados</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="model.database.CRUD.update_client">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model/database.html#CRUD.update_client"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.database.CRUD.update_client" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Método para la actualización de clientes</p>
+<dd><p>Método para la actualización de clientes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – contiene todos los datos del cliente</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -352,33 +393,68 @@ la librará re, para validar los campos de nombre, apellido y DNI</p>
 <span class="sig-name descname"><span class="pre">avalible_rooms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model/hotel_model.html#HotelModel.avalible_rooms"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.hotel_model.HotelModel.avalible_rooms" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Este método es encargado de enviar las habitaciones que estén disponibles,
 se utiliza el método set entre el argumento y las habitaciones del
-hotel, para eliminar las habitaciones que estén ocupadas y retorna una lista</p>
+hotel, para eliminar las habitaciones que estén ocupadas y retorna una lista.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – lista con las habitaciones ocupadas.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>lista con las habitaciones disponibles.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="model.hotel_model.HotelModel.date_model">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">date_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model/hotel_model.html#HotelModel.date_model"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.hotel_model.HotelModel.date_model" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Se formatea la fecha para que no haya errores en el programa</p>
+<dd><p>Se formatea la fecha para que no haya errores en el programa.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>date</strong> – string fecha.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>retorna la fecha con formato date</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="model.hotel_model.HotelModel.get_hotel_rooms">
 <span class="sig-name descname"><span class="pre">get_hotel_rooms</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/model/hotel_model.html#HotelModel.get_hotel_rooms"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.hotel_model.HotelModel.get_hotel_rooms" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p>Se retorna el atributo hotel_rooms</p>
+<dd><p>Se retorna el atributo hotel_rooms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lista de todas las habitaciones del hotel</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="model.hotel_model.HotelModel.validate_number">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model/hotel_model.html#HotelModel.validate_number"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.hotel_model.HotelModel.validate_number" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Regex para validar números se utiliza para validar el DNI y además para que el usuario
-solo pueda ingresar valores numéricos</p>
+solo pueda ingresar valores numéricos.
+:param args: lista con la cadena de numeros.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> – puede tener un patron regex.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="model.hotel_model.HotelModel.validate_string">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model/hotel_model.html#HotelModel.validate_string"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#model.hotel_model.HotelModel.validate_string" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Regex para validar caracteres, se utiliza para validar el nombre y apellido
-e igualmente solo permite ingresar valores alfabéticos</p>
+e igualmente solo permite ingresar valores alfabéticos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> – lista con la cadena de caracteres.</p></li>
+<li><p><strong>args</strong> – puede tener un patron regex.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

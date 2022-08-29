@@ -17,7 +17,8 @@ class HotelModel:
 
     def get_hotel_rooms(self):
         """
-            Se retorna el atributo hotel_rooms
+            Se retorna el atributo hotel_rooms.
+            
             :returns: lista de todas las habitaciones del hotel
         """
         return self.__hotel_rooms
@@ -25,8 +26,10 @@ class HotelModel:
     @staticmethod
     def date_model(date):
         """
-            Se formatea la fecha para que no haya errores en el programa
-            :param date: string fecha
+            Se formatea la fecha para que no haya errores en el programa.
+            
+            :param date: string fecha.
+            
             :returns: retorna la fecha con formato date
         """
         return datetime.strptime(date, '%Y-%m-%d').date()
@@ -35,9 +38,11 @@ class HotelModel:
         """
             Este método es encargado de enviar las habitaciones que estén disponibles,
             se utiliza el método set entre el argumento y las habitaciones del
-            hotel, para eliminar las habitaciones que estén ocupadas y retorna una lista
-            :param data: lista con las habitaciones ocupadas
-            :returns: lista con las habitaciones disponibles
+            hotel, para eliminar las habitaciones que estén ocupadas y retorna una lista.
+            
+            :param data: lista con las habitaciones ocupadas.
+            
+            :returns: lista con las habitaciones disponibles.
         """
         occupied_rooms = []
         free_rooms = []
@@ -54,9 +59,10 @@ class HotelModel:
     def validate_number(*args):
         """
             Regex para validar números se utiliza para validar el DNI y además para que el usuario
-            solo pueda ingresar valores numéricos
-            :param args: lista con la cadena de numeros
-            :param args: puede tener un patron regex
+            solo pueda ingresar valores numéricos.
+            :param args: lista con la cadena de numeros.
+            
+            :param args: puede tener un patron regex.
         """
         if not re.match(args[1] if len(args) > 1 else "^[0-9]{0,8}$", args[0]):
             return False
@@ -66,9 +72,11 @@ class HotelModel:
     def validate_string(*args):
         """
             Regex para validar caracteres, se utiliza para validar el nombre y apellido
-            e igualmente solo permite ingresar valores alfabéticos
-            :param args: lista con la cadena de caracteres
-            :param args: puede tener un patron regex
+            e igualmente solo permite ingresar valores alfabéticos.
+            
+            :param args: lista con la cadena de caracteres.
+            
+            :param args: puede tener un patron regex.
         """
         if not re.match(args[1] if len(args) > 1 else "^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]{0,30}$", args[0]):
             return False

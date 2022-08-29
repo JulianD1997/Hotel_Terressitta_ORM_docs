@@ -46,8 +46,7 @@ class Controller:
             suceda un error, retornando un aviso que indique si el cliente fue creado 
             o no.
 
-            :param client_data: datos de introducidos en los formularios
-            :module: view.gui.Interface.format_data_client.
+            :param client_data: datos obtenidos en los formularios
 
             :returns: mensaje de aviso sobre ejecución 
         """
@@ -78,7 +77,7 @@ class Controller:
             del modelo database (read_clients).
 
             :param tree: treeview de nuestra interfaz
-            :module: view.gui.Interface.__tree_view
+
         """
         clients = tree.get_children()
         for client in clients:
@@ -97,8 +96,9 @@ class Controller:
         mayores a 0 modificando así la búsqueda filtrada de los clientes. 
 
         :param tree: treeview de nuestra interfaz.
-        :param client_data: datos de introducidos en los formularios 
-        :module: view.gui.Interface.__tree_view
+
+        :param client_data: datos obtenidos en los formularios 
+
         """
         search_client = False
         search_name = search_last_name = search_dni = search_room = ""
@@ -167,8 +167,8 @@ class Controller:
         client se modela la fecha a tipo date y se procede a la ejecución del update_client del modelo database. Este
         proceso está envuelto entre un try except, que nos retornara un diálogo de texto correcto o incorrecto.
 
-        :param client_data: datos de introducidos en los formularios. 
-        :module: view.gui.Interface.format_data_client. 
+        :param client_data: datos obtenidos en los formularios. 
+
         :returns: mensaje de aviso sobre ejecución
 
         """
@@ -198,10 +198,12 @@ class Controller:
         ejecuta un cuadro de texto que permite validar si realmente desea borrar ese cliente, cuando esté la
         confirmación sea verdadera procede a eliminarlo y enviar un mensaje de satisfacción, si llega a ocurrir algún
         error este será notificado. Si la confirmación es falsa, se envía un mensaje de texto informando que
-        seleccione el cliente a eliminar. 
-        :param client['text']: id del cliente
-        :module:view.gui.Interface.__tree_view. 
+        seleccione el cliente a eliminar.
+
+        :param client['text']: id del cliente.
+
         :returns: mensaje de confirmación
+
         :returns: mensaje de aviso sobre ejecución
         """
         client = self.control_view.tree.item(self.control_view.tree.focus())
@@ -225,20 +227,20 @@ class Controller:
             event: para conocer que se seleccionó una fecha del calendario
             variable_button: este mostrara todas las habitaciones cuando el valor botón multifuncional
             sea (Search)
+
             room_form: comboBox de modelo vista
-            entry_date y exit_date = las fechas en las cuales se desea realizar un reserva.
+
             :param event: se selecciono una fecha de entrada y una de salida.
-            :module: view.gui.Interface.__date_event.
+
             :param variable_button: valor de botón multifuncional.
-            :module: view.gui.Interface.self.variable_button.
+
             :param room_form: comboBox de habitaciones de la interfaz
-            :module: view.gui.Interface.self.room_form.
+
             :param entry_date: fecha de entrada.
-            :module: view.gui.Interface.self.entry_date.
+
             :param exit_date: fecha de salida.
-            :module: view.gui.Interface.self.exit_date.
+
             :returns: retorna los valores que obtendrá el comboBox.
-            :module: view.gui.Interface.self.room_form.
         """
         if variable_button.get() == "Search":
             """
@@ -272,18 +274,20 @@ class Controller:
     def validate_string(self, text):
         """
             Válida que el valor que se está ingresando sea alfabético.
+            
             :param text: formulario nombre o apellido
-            :module: view.gui.Interface.treeview.
+
             :returns: retorna un booleano.
-            :module: model.hotel_model.Hotel_model.validate_string
+
         """
         return self.control_hotel_model.validate_string(text)
 
     def validate_number(self, text):
         """
             Válida que el valor que se esté ingresando sea numérico.
+
             :param text: DNI
-            :module: model.hotel_model.Hotel_model.validate_number.
+
             :returns: retorna un booleano.
         """
         return self.control_hotel_model.validate_number(text)
@@ -303,7 +307,7 @@ class Controller:
             :param room_error: etiqueta formulario no seleccionado.
             :param client_data: datos obtenidos de los formularios.
 
-            :returns: retorna un booleano.
+            :returns: retorna un booleano e informa si los campos estan vacios.
         """
         self.control_view.set_labels()
         validate = True
@@ -335,6 +339,7 @@ class Controller:
                 a llamar el método create_client enviando los argumentos que este necesite y a la vez
                 acciona el método message_box de la vista para mostrar los mensajes de alerta que sean 
                 necesarios.
+
                 :param varianle_button: valor ("Save") del botón multifuncional
             """
             if self.validate_data(self.control_view.name_error, self.control_view.last_name_error, \
@@ -346,7 +351,8 @@ class Controller:
             """
                 Si el botón multifuncional es Search procede a llamar el método query_client enviando los 
                 argumentos que este necesite(treeview, client_data)
-                :param varianle_button: valor("Search") del botón multifuncional
+
+                :param variable_button: valor("Search") del botón multifuncional
             """
             self.query_client(self.control_view.tree, client_data)
         elif self.control_view.variable_button.get() == 'Update':
@@ -354,6 +360,7 @@ class Controller:
                 Si el botón multifuncional es Update y la validación de los datos es correcta, procede a llamar 
                 el método update_client enviando los argumentos que este necesite(client_data) y a su vez 
                 mostrar los mensajes de alerta.
+
                 :param varianle_button: valor("Update") del botón multifuncional
             """
             if self.validate_data(self.control_view.name_error, self.control_view.last_name_error, \

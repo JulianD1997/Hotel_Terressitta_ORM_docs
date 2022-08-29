@@ -145,14 +145,20 @@
 
 <div class="viewcode-block" id="HotelModel.get_hotel_rooms"><a class="viewcode-back" href="../../model.html#model.hotel_model.HotelModel.get_hotel_rooms">[documentos]</a>    <span class="k">def</span> <span class="nf">get_hotel_rooms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            Se retorna el atributo hotel_rooms</span>
+<span class="sd">            Se retorna el atributo hotel_rooms.</span>
+<span class="sd">            </span>
+<span class="sd">            :returns: lista de todas las habitaciones del hotel</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hotel_rooms</span></div>
 
 <div class="viewcode-block" id="HotelModel.date_model"><a class="viewcode-back" href="../../model.html#model.hotel_model.HotelModel.date_model">[documentos]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">date_model</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            Se formatea la fecha para que no haya errores en el programa</span>
+<span class="sd">            Se formatea la fecha para que no haya errores en el programa.</span>
+<span class="sd">            </span>
+<span class="sd">            :param date: string fecha.</span>
+<span class="sd">            </span>
+<span class="sd">            :returns: retorna la fecha con formato date</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span></div>
 
@@ -160,7 +166,11 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Este método es encargado de enviar las habitaciones que estén disponibles,</span>
 <span class="sd">            se utiliza el método set entre el argumento y las habitaciones del</span>
-<span class="sd">            hotel, para eliminar las habitaciones que estén ocupadas y retorna una lista</span>
+<span class="sd">            hotel, para eliminar las habitaciones que estén ocupadas y retorna una lista.</span>
+<span class="sd">            </span>
+<span class="sd">            :param data: lista con las habitaciones ocupadas.</span>
+<span class="sd">            </span>
+<span class="sd">            :returns: lista con las habitaciones disponibles.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">occupied_rooms</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">free_rooms</span> <span class="o">=</span> <span class="p">[]</span>
@@ -177,7 +187,10 @@
     <span class="k">def</span> <span class="nf">validate_number</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Regex para validar números se utiliza para validar el DNI y además para que el usuario</span>
-<span class="sd">            solo pueda ingresar valores numéricos</span>
+<span class="sd">            solo pueda ingresar valores numéricos.</span>
+<span class="sd">            :param args: lista con la cadena de numeros.</span>
+<span class="sd">            </span>
+<span class="sd">            :param args: puede tener un patron regex.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;^[0-9]{0,8}$&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
             <span class="k">return</span> <span class="kc">False</span>
@@ -187,7 +200,11 @@
     <span class="k">def</span> <span class="nf">validate_string</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Regex para validar caracteres, se utiliza para validar el nombre y apellido</span>
-<span class="sd">            e igualmente solo permite ingresar valores alfabéticos</span>
+<span class="sd">            e igualmente solo permite ingresar valores alfabéticos.</span>
+<span class="sd">            </span>
+<span class="sd">            :param args: lista con la cadena de caracteres.</span>
+<span class="sd">            </span>
+<span class="sd">            :param args: puede tener un patron regex.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;^[a-zA-ZÀ-ÿ</span><span class="se">\u00f1\u00d1</span><span class="s2">\s]{0,30}$&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
             <span class="k">return</span> <span class="kc">False</span>

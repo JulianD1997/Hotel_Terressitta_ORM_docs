@@ -173,12 +173,10 @@
 <span class="sd">            de datos, este módulo está entre un bloque try except en dado caso en que </span>
 <span class="sd">            suceda un error, retornando un aviso que indique si el cliente fue creado </span>
 <span class="sd">            o no.</span>
-<span class="sd">            :param client_data: argumento obtenido de la interfaz esta variable es un</span>
-<span class="sd">            diccionario que tiene todos los datos de los formularios.</span>
-<span class="sd">            :module: view.gui.Interface.format_data_client.</span>
-<span class="sd">            :returns: tiene un retorno por medio de un mensaje de aviso este mensaje</span>
-<span class="sd">            try si no sucedió ningún error retorna que el cliente fue creado correctamente</span>
-<span class="sd">            except si sucedió un error retorna que el cliente no fue creado correctamente </span>
+
+<span class="sd">            :param client_data: datos obtenidos en los formularios</span>
+
+<span class="sd">            :returns: mensaje de aviso sobre ejecución </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">entry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_hotel_model</span><span class="o">.</span><span class="n">date_model</span><span class="p">(</span><span class="n">client_data</span><span class="p">[</span><span class="s1">&#39;entry_date&#39;</span><span class="p">])</span>
@@ -205,10 +203,9 @@
 <span class="sd">            Recibe un parámetro el cual es el treeview para proceder a eliminar todos </span>
 <span class="sd">            los datos que estén dentro del él y luego insertar los registros recibidos</span>
 <span class="sd">            del modelo database (read_clients).</span>
-<span class="sd">            :param tree: este parametro es el treeview de nuestra interfaz en el cual </span>
-<span class="sd">            se muestran los datos, recibe este argumento para eliminar los datos que tiene</span>
-<span class="sd">            y actualizarlos con los de la base de datos.</span>
-<span class="sd">            :module: view.gui.Interface.__tree_view</span>
+
+<span class="sd">            :param tree: treeview de nuestra interfaz</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">clients</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">get_children</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">client</span> <span class="ow">in</span> <span class="n">clients</span><span class="p">:</span>
@@ -224,10 +221,12 @@
 <span class="sd">        parámetros que el treeview actualizar la visualización de los clientes filtrados y el segundo argumento los</span>
 <span class="sd">        datos a filtrar. Se inicializan variables de caracteres que corresponden a la búsqueda donde estás,</span>
 <span class="sd">        son modificadas cuando la longitud de algún dato es mayor a 0. Se utiliza condicionales para longitudes</span>
-<span class="sd">        mayores a 0 modificando así la búsqueda filtrada de los clientes. :param tree: este parametro es el treeview</span>
-<span class="sd">        de nuestra interfaz en el cual se muestran los datos, recibe este argumento para eliminar los datos que tiene</span>
-<span class="sd">        y actualizarlos con los datos filtrados. :param client_data:argumento obtenido de la interfaz esta variable</span>
-<span class="sd">        es un diccionario que tiene todos los datos de los formularios. :module: view.gui.Interface.__tree_view</span>
+<span class="sd">        mayores a 0 modificando así la búsqueda filtrada de los clientes. </span>
+
+<span class="sd">        :param tree: treeview de nuestra interfaz.</span>
+
+<span class="sd">        :param client_data: datos obtenidos en los formularios </span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">search_client</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">search_name</span> <span class="o">=</span> <span class="n">search_last_name</span> <span class="o">=</span> <span class="n">search_dni</span> <span class="o">=</span> <span class="n">search_room</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
@@ -251,9 +250,11 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">client_data</span><span class="p">[</span><span class="s1">&#39;exit_date&#39;</span><span class="p">])</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">search_client</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="n">search_exit_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_hotel_model</span><span class="o">.</span><span class="n">date_model</span><span class="p">(</span><span class="n">client_data</span><span class="p">[</span><span class="s1">&#39;entry_date&#39;</span><span class="p">])</span>
-        <span class="sd">&quot;&quot;&quot;Al finalizar la comprobación y a su vez la modificación de los variables de búsqueda, se procede a </span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Al finalizar la comprobación y a su vez la modificación de los variables de búsqueda, se procede a </span>
 <span class="sd">        ejecutar search_client del módulo database donde este método nos retorna los datos encontrados en la base de </span>
-<span class="sd">        datos. &quot;&quot;&quot;</span>
+<span class="sd">        datos. </span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_db</span><span class="o">.</span><span class="n">search_client</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="n">search_name</span><span class="p">,</span>
             <span class="n">last_name</span><span class="o">=</span><span class="n">search_last_name</span><span class="p">,</span>
@@ -261,17 +262,25 @@
             <span class="n">room</span><span class="o">=</span><span class="n">search_room</span><span class="p">,</span>
             <span class="n">date_entry</span><span class="o">=</span><span class="n">search_entry_date</span><span class="p">,</span>
             <span class="n">date_exit</span><span class="o">=</span><span class="n">search_exit_date</span><span class="p">)</span>
-        <span class="sd">&quot;&quot;&quot;A continuación se procede a realizar una condición de longitud de la variable (data) para conocer que haya </span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A continuación se procede a realizar una condición de longitud de la variable (data) para conocer que haya </span>
 <span class="sd">        datos en ella y un booleano(search_client) para conocer que se ingresó un dato para la búsqueda. De no haber </span>
 <span class="sd">        datos o de no haber ingresado parámetros para la búsqueda, se ejecuta un aviso de diálogo donde nos informara </span>
 <span class="sd">        si el cliente no fue encontrado o de en el caso de no ingresar un valor a filtrar nos indicara inténtelo de </span>
 <span class="sd">        nuevo. Por último, si la variable (data) tiene valores, se procede a actualizar la vista del treeview </span>
-<span class="sd">        cargando estos valores de clientes filtrados. :returns: retorna un mensaje de alerta donde indica si el </span>
-<span class="sd">        cliente filtrado no se encuentra o si no se ingresó ningún parámetro. &quot;&quot;&quot;</span>
+<span class="sd">        cargando estos valores de clientes filtrados. </span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">data</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">search_client</span><span class="p">:</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            :returns: mensaje de aviso sobre ejecución</span>
+<span class="sd">            &quot;&quot;&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">message_box</span><span class="p">(</span>
                 <span class="p">(</span><span class="s2">&quot;Query&quot;</span><span class="p">,</span> <span class="s2">&quot;The client is not exist&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">search_client</span> <span class="k">else</span> <span class="p">(</span><span class="s2">&quot;Query&quot;</span><span class="p">,</span> <span class="s2">&quot;try again&quot;</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            :returns: el treeview con los clientes filtrados</span>
+<span class="sd">            &quot;&quot;&quot;</span>
             <span class="n">clients</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">get_children</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">client</span> <span class="ow">in</span> <span class="n">clients</span><span class="p">:</span>
                 <span class="n">tree</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
@@ -285,10 +294,11 @@
 <span class="sd">        Se encarga de actualizar el cliente recibiendo los datos del cliente se estructura estos datos en el modelo</span>
 <span class="sd">        client se modela la fecha a tipo date y se procede a la ejecución del update_client del modelo database. Este</span>
 <span class="sd">        proceso está envuelto entre un try except, que nos retornara un diálogo de texto correcto o incorrecto.</span>
-<span class="sd">        :param client_data: argumento obtenido de la interfaz esta variable es un diccionario que tiene todos los</span>
-<span class="sd">        datos de los formularios. :module: view.gui.Interface.format_data_client. :returns: tiene un retorno por</span>
-<span class="sd">        medio de un mensaje de aviso, este mensaje try si no sucedió ningún error, retorna que el cliente fue</span>
-<span class="sd">        actualizado correctamente except si sucedió un error retorna que el cliente no fue actualizado correctamente</span>
+
+<span class="sd">        :param client_data: datos obtenidos en los formularios. </span>
+
+<span class="sd">        :returns: mensaje de aviso sobre ejecución</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">entry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_hotel_model</span><span class="o">.</span><span class="n">date_model</span><span class="p">(</span><span class="n">client_data</span><span class="p">[</span><span class="s1">&#39;entry_date&#39;</span><span class="p">])</span>
@@ -316,12 +326,13 @@
 <span class="sd">        ejecuta un cuadro de texto que permite validar si realmente desea borrar ese cliente, cuando esté la</span>
 <span class="sd">        confirmación sea verdadera procede a eliminarlo y enviar un mensaje de satisfacción, si llega a ocurrir algún</span>
 <span class="sd">        error este será notificado. Si la confirmación es falsa, se envía un mensaje de texto informando que</span>
-<span class="sd">        seleccione el cliente a eliminar. :param client[&#39;text&#39;]: con la instancia creada en la interfaz obtenemos el</span>
-<span class="sd">        ID del cliente que se desea borrar por medio de la selección de este en el treeview. :module:</span>
-<span class="sd">        view.gui.Interface.__tree_view. :returns: Primero pide confirmar que se desea realmente borrar el cliente si</span>
-<span class="sd">        se acepta, retorna un cuadro de texto donde se indica que el cliente fue borrado correctamente o de suceder</span>
-<span class="sd">        un error, retorna que el cliente no fue eliminado correctamente, en dado caso que no se acepte borrar el</span>
-<span class="sd">        cliente retorna un mensaje que indica que seleccione el cliente que se desea borrar.</span>
+<span class="sd">        seleccione el cliente a eliminar.</span>
+
+<span class="sd">        :param client[&#39;text&#39;]: id del cliente.</span>
+
+<span class="sd">        :returns: mensaje de confirmación</span>
+
+<span class="sd">        :returns: mensaje de aviso sobre ejecución</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">focus</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">id_client</span> <span class="o">=</span> <span class="n">client</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
@@ -344,21 +355,20 @@
 <span class="sd">            event: para conocer que se seleccionó una fecha del calendario</span>
 <span class="sd">            variable_button: este mostrara todas las habitaciones cuando el valor botón multifuncional</span>
 <span class="sd">            sea (Search)</span>
+
 <span class="sd">            room_form: comboBox de modelo vista</span>
-<span class="sd">            entry_date y exit_date = las fechas en las cuales se desea realizar un reserva.</span>
-<span class="sd">            :param event: evento cuando se selecciona una fecha de salida y de entrada.</span>
-<span class="sd">            :module: view.gui.Interface.__date_event.</span>
-<span class="sd">            :param variable_button: parámetro que nos indica el valor de botón multifuncional.</span>
-<span class="sd">            :module: view.gui.Interface.self.variable_button.</span>
-<span class="sd">            :param room_form: comboBox de la interfaz se requiere para actualizarlo con las habitaciones </span>
-<span class="sd">            disponibles o con todas las habitaciones del hotel.</span>
-<span class="sd">            :module: view.gui.Interface.self.room_form.</span>
-<span class="sd">            :param entry_date: fecha de entrada o fecha de inicio de reserva.</span>
-<span class="sd">            :module: view.gui.Interface.self.entry_date.</span>
-<span class="sd">            :param exit_date: fecha de salida o fecha de finalización de reserva.</span>
-<span class="sd">            :module: view.gui.Interface.self.exit_date.</span>
+
+<span class="sd">            :param event: se selecciono una fecha de entrada y una de salida.</span>
+
+<span class="sd">            :param variable_button: valor de botón multifuncional.</span>
+
+<span class="sd">            :param room_form: comboBox de habitaciones de la interfaz</span>
+
+<span class="sd">            :param entry_date: fecha de entrada.</span>
+
+<span class="sd">            :param exit_date: fecha de salida.</span>
+
 <span class="sd">            :returns: retorna los valores que obtendrá el comboBox.</span>
-<span class="sd">            :module: view.gui.Interface.self.room_form.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">variable_button</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Search&quot;</span><span class="p">:</span>
             <span class="sd">&quot;&quot;&quot;</span>
@@ -392,20 +402,21 @@
 <div class="viewcode-block" id="Controller.validate_string"><a class="viewcode-back" href="../../controller.html#controller.control.Controller.validate_string">[documentos]</a>    <span class="k">def</span> <span class="nf">validate_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Válida que el valor que se está ingresando sea alfabético.</span>
-<span class="sd">            :param text: este parámetro es requerido para la validación de los cuadros</span>
-<span class="sd">            de formularios, este módulo válida los stringVar de la interfaz.</span>
-<span class="sd">            :module: view.gui.Interface.treeview.</span>
-<span class="sd">            :returns: retorna un booleano que nos envía el modelo.</span>
-<span class="sd">            :module: model.hotel_model.Hotel_model.validate_string</span>
+<span class="sd">            </span>
+<span class="sd">            :param text: formulario nombre o apellido</span>
+
+<span class="sd">            :returns: retorna un booleano.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_hotel_model</span><span class="o">.</span><span class="n">validate_string</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Controller.validate_number"><a class="viewcode-back" href="../../controller.html#controller.control.Controller.validate_number">[documentos]</a>    <span class="k">def</span> <span class="nf">validate_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Válida que el valor que se esté ingresando sea numérico.</span>
-<span class="sd">            :param text: este parámetro es requerido para la validación de los cuadros</span>
-<span class="sd">            de formularios, este módulo válida los intVar de la interfaz.</span>
-<span class="sd">            :module: model.hotel_model.Hotel_model.validate_number.</span>
+
+<span class="sd">            :param text: DNI</span>
+
+<span class="sd">            :returns: retorna un booleano.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_hotel_model</span><span class="o">.</span><span class="n">validate_number</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
 
@@ -417,19 +428,14 @@
 <span class="sd">            de no ser correcto o en caso de uno ingresar valores se mostraran etiquetas abajo de los formularios</span>
 <span class="sd">            indicando que estos son requeridos. Retornando un booleano para que el método action_press realice</span>
 <span class="sd">            el debido flujo del programa.</span>
-<span class="sd">            :param name_error: etiqueta que nos indicara que el campo nombre está vacío.</span>
-<span class="sd">            :module: view.gui.Interface.self.name_error.</span>
-<span class="sd">            :param last_name_error: etiqueta que nos indicara que el campo apellido está vacío.</span>
-<span class="sd">            :module: view.gui.Interface.self.last_name_error.</span>
-<span class="sd">            :param dni_error: etiqueta que nos indicara que el campo DNI es erróneo o está vacío.</span>
-<span class="sd">            :module: view.gui.Interface.self.dni_error.</span>
-<span class="sd">            :param room_error: etiqueta que nos indicara que no se seleccionó una habitación.</span>
-<span class="sd">            :module: view.gui.Interface.self.room_error.</span>
-<span class="sd">            :param client_data: argumento obtenido de la interfaz esta variable es un</span>
-<span class="sd">            diccionario que tiene todos los datos de los formularios.</span>
-<span class="sd">            :module: view.gui.Interface.format_data_client.</span>
 
-<span class="sd">            :returns: retorna un booleano.</span>
+<span class="sd">            :param name_error: etiqueta formulario vacio.</span>
+<span class="sd">            :param last_name_error: etiqueta formulario vacio.</span>
+<span class="sd">            :param dni_error: etiqueta formulario vacio.</span>
+<span class="sd">            :param room_error: etiqueta formulario no seleccionado.</span>
+<span class="sd">            :param client_data: datos obtenidos de los formularios.</span>
+
+<span class="sd">            :returns: retorna un booleano e informa si los campos estan vacios.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">set_labels</span><span class="p">()</span>
         <span class="n">validate</span> <span class="o">=</span> <span class="kc">True</span>
@@ -452,9 +458,7 @@
 <span class="sd">            Flujo de control del botón multifuncional donde dependiendo de su valor</span>
 <span class="sd">            tomara un método de esta clase.</span>
 
-<span class="sd">            :param client_data: argumento obtenido de la interfaz esta variable es un</span>
-<span class="sd">            diccionario que tiene todos los datos de los formularios.</span>
-<span class="sd">            :module: view.gui.Interface.format_data_client.</span>
+<span class="sd">            :param client_data: datos obtenidos de los formularios.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">variable_button</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;Save&#39;</span><span class="p">:</span>
@@ -463,8 +467,8 @@
 <span class="sd">                a llamar el método create_client enviando los argumentos que este necesite y a la vez</span>
 <span class="sd">                acciona el método message_box de la vista para mostrar los mensajes de alerta que sean </span>
 <span class="sd">                necesarios.</span>
-<span class="sd">                :param varianle_button: valor del botón multifuncional, en este caso se valida que su valor</span>
-<span class="sd">                sea &quot;Save&quot;</span>
+
+<span class="sd">                :param varianle_button: valor (&quot;Save&quot;) del botón multifuncional</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">name_error</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">last_name_error</span><span class="p">,</span> \
                                   <span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">dni_error</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">room_error</span><span class="p">,</span> <span class="n">client_data</span><span class="p">):</span>
@@ -475,8 +479,8 @@
             <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">                Si el botón multifuncional es Search procede a llamar el método query_client enviando los </span>
 <span class="sd">                argumentos que este necesite(treeview, client_data)</span>
-<span class="sd">                :param varianle_button: valor del botón multifuncional, en este caso se valida que su valor</span>
-<span class="sd">                sea &quot;Search&quot;</span>
+
+<span class="sd">                :param variable_button: valor(&quot;Search&quot;) del botón multifuncional</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">query_client</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">tree</span><span class="p">,</span> <span class="n">client_data</span><span class="p">)</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">variable_button</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;Update&#39;</span><span class="p">:</span>
@@ -484,8 +488,8 @@
 <span class="sd">                Si el botón multifuncional es Update y la validación de los datos es correcta, procede a llamar </span>
 <span class="sd">                el método update_client enviando los argumentos que este necesite(client_data) y a su vez </span>
 <span class="sd">                mostrar los mensajes de alerta.</span>
-<span class="sd">                :param varianle_button: valor del botón multifuncional, en este caso se valida que su valor</span>
-<span class="sd">                sea &quot;Update&quot;</span>
+
+<span class="sd">                :param varianle_button: valor(&quot;Update&quot;) del botón multifuncional</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">name_error</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">last_name_error</span><span class="p">,</span> \
                                   <span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">dni_error</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">control_view</span><span class="o">.</span><span class="n">room_error</span><span class="p">,</span> <span class="n">client_data</span><span class="p">):</span>
